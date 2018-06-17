@@ -1,0 +1,1664 @@
+
+SimpleTime.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007f4  00000000  00000000  000000b4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000a  00800060  000007f4  000008a8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000030  0080006a  0080006a  000008b2  2**0
+                  ALLOC
+  3 .eeprom       00000003  00810000  00810000  000008b2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .comment      00000030  00000000  00000000  000008b5  2**0
+                  CONTENTS, READONLY
+  5 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000008e8  2**2
+                  CONTENTS, READONLY
+  6 .debug_aranges 000001b8  00000000  00000000  00000928  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00001ced  00000000  00000000  00000ae0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000b9a  00000000  00000000  000027cd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000fe6  00000000  00000000  00003367  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000370  00000000  00000000  00004350  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000812  00000000  00000000  000046c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    0000124d  00000000  00000000  00004ed2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000118  00000000  00000000  0000611f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	17 c0       	rjmp	.+46     	; 0x30 <__ctors_end>
+   2:	2f c0       	rjmp	.+94     	; 0x62 <__bad_interrupt>
+   4:	2e c0       	rjmp	.+92     	; 0x62 <__bad_interrupt>
+   6:	2d c0       	rjmp	.+90     	; 0x62 <__bad_interrupt>
+   8:	40 c2       	rjmp	.+1152   	; 0x48a <__vector_4>
+   a:	2b c0       	rjmp	.+86     	; 0x62 <__bad_interrupt>
+   c:	2a c0       	rjmp	.+84     	; 0x62 <__bad_interrupt>
+   e:	29 c0       	rjmp	.+82     	; 0x62 <__bad_interrupt>
+  10:	28 c0       	rjmp	.+80     	; 0x62 <__bad_interrupt>
+  12:	27 c0       	rjmp	.+78     	; 0x62 <__bad_interrupt>
+  14:	26 c0       	rjmp	.+76     	; 0x62 <__bad_interrupt>
+  16:	25 c0       	rjmp	.+74     	; 0x62 <__bad_interrupt>
+  18:	24 c0       	rjmp	.+72     	; 0x62 <__bad_interrupt>
+  1a:	14 c2       	rjmp	.+1064   	; 0x444 <__vector_13>
+  1c:	22 c0       	rjmp	.+68     	; 0x62 <__bad_interrupt>
+  1e:	21 c0       	rjmp	.+66     	; 0x62 <__bad_interrupt>
+  20:	20 c0       	rjmp	.+64     	; 0x62 <__bad_interrupt>
+  22:	1f c0       	rjmp	.+62     	; 0x62 <__bad_interrupt>
+  24:	1e c0       	rjmp	.+60     	; 0x62 <__bad_interrupt>
+  26:	1d c0       	rjmp	.+58     	; 0x62 <__bad_interrupt>
+  28:	1c c0       	rjmp	.+56     	; 0x62 <__bad_interrupt>
+
+0000002a <__trampolines_end>:
+  2a:	2f 3b       	cpi	r18, 0xBF	; 191
+  2c:	3b 64       	Address 0x0000002c is out of bounds.
+.word	0xffff	; ????
+
+0000002d <pow3Table8>:
+  2d:	64 0a 01                                            d..
+
+00000030 <__ctors_end>:
+  30:	11 24       	eor	r1, r1
+  32:	1f be       	out	0x3f, r1	; 63
+  34:	cf ed       	ldi	r28, 0xDF	; 223
+  36:	cd bf       	out	0x3d, r28	; 61
+
+00000038 <__do_copy_data>:
+  38:	10 e0       	ldi	r17, 0x00	; 0
+  3a:	a0 e6       	ldi	r26, 0x60	; 96
+  3c:	b0 e0       	ldi	r27, 0x00	; 0
+  3e:	e4 ef       	ldi	r30, 0xF4	; 244
+  40:	f7 e0       	ldi	r31, 0x07	; 7
+  42:	02 c0       	rjmp	.+4      	; 0x48 <__SREG__+0x9>
+  44:	05 90       	lpm	r0, Z+
+  46:	0d 92       	st	X+, r0
+  48:	aa 36       	cpi	r26, 0x6A	; 106
+  4a:	b1 07       	cpc	r27, r17
+  4c:	d9 f7       	brne	.-10     	; 0x44 <__SREG__+0x5>
+
+0000004e <__do_clear_bss>:
+  4e:	20 e0       	ldi	r18, 0x00	; 0
+  50:	aa e6       	ldi	r26, 0x6A	; 106
+  52:	b0 e0       	ldi	r27, 0x00	; 0
+  54:	01 c0       	rjmp	.+2      	; 0x58 <.do_clear_bss_start>
+
+00000056 <.do_clear_bss_loop>:
+  56:	1d 92       	st	X+, r1
+
+00000058 <.do_clear_bss_start>:
+  58:	aa 39       	cpi	r26, 0x9A	; 154
+  5a:	b2 07       	cpc	r27, r18
+  5c:	e1 f7       	brne	.-8      	; 0x56 <.do_clear_bss_loop>
+  5e:	54 d2       	rcall	.+1192   	; 0x508 <main>
+  60:	c7 c3       	rjmp	.+1934   	; 0x7f0 <_exit>
+
+00000062 <__bad_interrupt>:
+  62:	ce cf       	rjmp	.-100    	; 0x0 <__vectors>
+
+00000064 <hd44780_SendByte>:
+{
+	while(len--)
+	{
+		hd44780_SendData(*(pBuff++));
+	}
+}
+  64:	61 11       	cpse	r22, r1
+  66:	02 c0       	rjmp	.+4      	; 0x6c <hd44780_SendByte+0x8>
+  68:	c1 98       	cbi	0x18, 1	; 24
+  6a:	01 c0       	rjmp	.+2      	; 0x6e <hd44780_SendByte+0xa>
+  6c:	c1 9a       	sbi	0x18, 1	; 24
+  6e:	97 b3       	in	r25, 0x17	; 23
+  70:	90 6f       	ori	r25, 0xF0	; 240
+  72:	97 bb       	out	0x17, r25	; 23
+  74:	98 b3       	in	r25, 0x18	; 24
+  76:	9f 70       	andi	r25, 0x0F	; 15
+  78:	98 bb       	out	0x18, r25	; 24
+  7a:	98 b3       	in	r25, 0x18	; 24
+  7c:	28 2f       	mov	r18, r24
+  7e:	20 7f       	andi	r18, 0xF0	; 240
+  80:	92 2b       	or	r25, r18
+  82:	98 bb       	out	0x18, r25	; 24
+  84:	c3 9a       	sbi	0x18, 3	; 24
+  86:	92 e0       	ldi	r25, 0x02	; 2
+  88:	9a 95       	dec	r25
+  8a:	f1 f7       	brne	.-4      	; 0x88 <hd44780_SendByte+0x24>
+  8c:	00 c0       	rjmp	.+0      	; 0x8e <hd44780_SendByte+0x2a>
+  8e:	c3 98       	cbi	0x18, 3	; 24
+  90:	92 e0       	ldi	r25, 0x02	; 2
+  92:	9a 95       	dec	r25
+  94:	f1 f7       	brne	.-4      	; 0x92 <hd44780_SendByte+0x2e>
+  96:	00 c0       	rjmp	.+0      	; 0x98 <hd44780_SendByte+0x34>
+  98:	98 b3       	in	r25, 0x18	; 24
+  9a:	9f 70       	andi	r25, 0x0F	; 15
+  9c:	98 bb       	out	0x18, r25	; 24
+  9e:	98 b3       	in	r25, 0x18	; 24
+  a0:	82 95       	swap	r24
+  a2:	80 7f       	andi	r24, 0xF0	; 240
+  a4:	89 2b       	or	r24, r25
+  a6:	88 bb       	out	0x18, r24	; 24
+  a8:	c3 9a       	sbi	0x18, 3	; 24
+  aa:	82 e0       	ldi	r24, 0x02	; 2
+  ac:	8a 95       	dec	r24
+  ae:	f1 f7       	brne	.-4      	; 0xac <hd44780_SendByte+0x48>
+  b0:	00 c0       	rjmp	.+0      	; 0xb2 <hd44780_SendByte+0x4e>
+  b2:	c3 98       	cbi	0x18, 3	; 24
+  b4:	87 b3       	in	r24, 0x17	; 23
+  b6:	8f 70       	andi	r24, 0x0F	; 15
+  b8:	87 bb       	out	0x17, r24	; 23
+  ba:	88 b3       	in	r24, 0x18	; 24
+  bc:	80 6f       	ori	r24, 0xF0	; 240
+  be:	88 bb       	out	0x18, r24	; 24
+  c0:	08 95       	ret
+
+000000c2 <hd44780_SendCmd>:
+  c2:	60 e0       	ldi	r22, 0x00	; 0
+  c4:	cf df       	rcall	.-98     	; 0x64 <hd44780_SendByte>
+  c6:	85 e8       	ldi	r24, 0x85	; 133
+  c8:	8a 95       	dec	r24
+  ca:	f1 f7       	brne	.-4      	; 0xc8 <hd44780_SendCmd+0x6>
+  cc:	00 00       	nop
+  ce:	08 95       	ret
+
+000000d0 <hd44780_SendData>:
+  d0:	61 e0       	ldi	r22, 0x01	; 1
+  d2:	c8 df       	rcall	.-112    	; 0x64 <hd44780_SendByte>
+  d4:	85 e8       	ldi	r24, 0x85	; 133
+  d6:	8a 95       	dec	r24
+  d8:	f1 f7       	brne	.-4      	; 0xd6 <hd44780_SendData+0x6>
+  da:	00 00       	nop
+  dc:	08 95       	ret
+
+000000de <hd44780_Clear>:
+  de:	81 e0       	ldi	r24, 0x01	; 1
+  e0:	f0 df       	rcall	.-32     	; 0xc2 <hd44780_SendCmd>
+  e2:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <__data_end>
+  e6:	8f e9       	ldi	r24, 0x9F	; 159
+  e8:	9f e0       	ldi	r25, 0x0F	; 15
+  ea:	01 97       	sbiw	r24, 0x01	; 1
+  ec:	f1 f7       	brne	.-4      	; 0xea <__stack+0xb>
+  ee:	00 c0       	rjmp	.+0      	; 0xf0 <__stack+0x11>
+  f0:	00 00       	nop
+  f2:	08 95       	ret
+
+000000f4 <hd44780_Init>:
+  f4:	bb 9a       	sbi	0x17, 3	; 23
+  f6:	b9 9a       	sbi	0x17, 1	; 23
+  f8:	ba 9a       	sbi	0x17, 2	; 23
+  fa:	8f e3       	ldi	r24, 0x3F	; 63
+  fc:	9c e9       	ldi	r25, 0x9C	; 156
+  fe:	01 97       	sbiw	r24, 0x01	; 1
+ 100:	f1 f7       	brne	.-4      	; 0xfe <hd44780_Init+0xa>
+ 102:	00 c0       	rjmp	.+0      	; 0x104 <hd44780_Init+0x10>
+ 104:	00 00       	nop
+ 106:	60 e0       	ldi	r22, 0x00	; 0
+ 108:	80 e2       	ldi	r24, 0x20	; 32
+ 10a:	ac df       	rcall	.-168    	; 0x64 <hd44780_SendByte>
+ 10c:	8f e0       	ldi	r24, 0x0F	; 15
+ 10e:	97 e2       	ldi	r25, 0x27	; 39
+ 110:	01 97       	sbiw	r24, 0x01	; 1
+ 112:	f1 f7       	brne	.-4      	; 0x110 <hd44780_Init+0x1c>
+ 114:	00 c0       	rjmp	.+0      	; 0x116 <hd44780_Init+0x22>
+ 116:	00 00       	nop
+ 118:	60 e0       	ldi	r22, 0x00	; 0
+ 11a:	80 e2       	ldi	r24, 0x20	; 32
+ 11c:	a3 df       	rcall	.-186    	; 0x64 <hd44780_SendByte>
+ 11e:	87 ec       	ldi	r24, 0xC7	; 199
+ 120:	90 e0       	ldi	r25, 0x00	; 0
+ 122:	01 97       	sbiw	r24, 0x01	; 1
+ 124:	f1 f7       	brne	.-4      	; 0x122 <hd44780_Init+0x2e>
+ 126:	00 c0       	rjmp	.+0      	; 0x128 <hd44780_Init+0x34>
+ 128:	00 00       	nop
+ 12a:	88 e2       	ldi	r24, 0x28	; 40
+ 12c:	ca df       	rcall	.-108    	; 0xc2 <hd44780_SendCmd>
+ 12e:	8f e1       	ldi	r24, 0x1F	; 31
+ 130:	9e e4       	ldi	r25, 0x4E	; 78
+ 132:	01 97       	sbiw	r24, 0x01	; 1
+ 134:	f1 f7       	brne	.-4      	; 0x132 <hd44780_Init+0x3e>
+ 136:	00 c0       	rjmp	.+0      	; 0x138 <hd44780_Init+0x44>
+ 138:	00 00       	nop
+ 13a:	8c e0       	ldi	r24, 0x0C	; 12
+ 13c:	c2 df       	rcall	.-124    	; 0xc2 <hd44780_SendCmd>
+ 13e:	8f e1       	ldi	r24, 0x1F	; 31
+ 140:	9e e4       	ldi	r25, 0x4E	; 78
+ 142:	01 97       	sbiw	r24, 0x01	; 1
+ 144:	f1 f7       	brne	.-4      	; 0x142 <hd44780_Init+0x4e>
+ 146:	00 c0       	rjmp	.+0      	; 0x148 <hd44780_Init+0x54>
+ 148:	00 00       	nop
+ 14a:	86 e0       	ldi	r24, 0x06	; 6
+ 14c:	ba cf       	rjmp	.-140    	; 0xc2 <hd44780_SendCmd>
+
+0000014e <hd44780_GoToXY>:
+ 14e:	cf 93       	push	r28
+ 150:	c8 2f       	mov	r28, r24
+ 152:	80 ff       	sbrs	r24, 0
+ 154:	02 c0       	rjmp	.+4      	; 0x15a <hd44780_GoToXY+0xc>
+ 156:	80 e4       	ldi	r24, 0x40	; 64
+ 158:	01 c0       	rjmp	.+2      	; 0x15c <hd44780_GoToXY+0xe>
+ 15a:	80 e0       	ldi	r24, 0x00	; 0
+ 15c:	c2 30       	cpi	r28, 0x02	; 2
+ 15e:	08 f0       	brcs	.+2      	; 0x162 <hd44780_GoToXY+0x14>
+ 160:	80 5f       	subi	r24, 0xF0	; 240
+ 162:	86 0f       	add	r24, r22
+ 164:	80 68       	ori	r24, 0x80	; 128
+ 166:	ad df       	rcall	.-166    	; 0xc2 <hd44780_SendCmd>
+ 168:	c0 93 6a 00 	sts	0x006A, r28	; 0x80006a <__data_end>
+ 16c:	cf 91       	pop	r28
+ 16e:	08 95       	ret
+
+00000170 <hd44780_Puts>:
+
+//------------------------------ Send string to current cursor position
+void hd44780_Puts(char * str)
+{
+ 170:	cf 93       	push	r28
+ 172:	df 93       	push	r29
+ 174:	ec 01       	movw	r28, r24
+	while(*str != '\0')
+ 176:	89 91       	ld	r24, Y+
+ 178:	88 23       	and	r24, r24
+ 17a:	89 f0       	breq	.+34     	; 0x19e <hd44780_Puts+0x2e>
+	{
+		switch(*str) {
+ 17c:	8a 30       	cpi	r24, 0x0A	; 10
+ 17e:	19 f0       	breq	.+6      	; 0x186 <hd44780_Puts+0x16>
+ 180:	8d 30       	cpi	r24, 0x0D	; 13
+ 182:	31 f0       	breq	.+12     	; 0x190 <hd44780_Puts+0x20>
+ 184:	0a c0       	rjmp	.+20     	; 0x19a <hd44780_Puts+0x2a>
+			// Goto new line
+			case '\n':
+				LastRow++;
+ 186:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <__data_end>
+ 18a:	8f 5f       	subi	r24, 0xFF	; 255
+ 18c:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <__data_end>
+				hd44780_GoToXY(LastRow, 0);
+				break;
+
+			// Flush cursor position in row
+			case '\r':
+				hd44780_GoToXY(LastRow, 0);
+ 190:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <__data_end>
+ 194:	60 e0       	ldi	r22, 0x00	; 0
+ 196:	db df       	rcall	.-74     	; 0x14e <hd44780_GoToXY>
+				break;
+ 198:	ee cf       	rjmp	.-36     	; 0x176 <hd44780_Puts+0x6>
+					hd44780_SendData(0x20);
+				}
+				break;*/
+
+			default:
+				hd44780_SendData(*str);
+ 19a:	9a df       	rcall	.-204    	; 0xd0 <hd44780_SendData>
+				break;
+ 19c:	ec cf       	rjmp	.-40     	; 0x176 <hd44780_Puts+0x6>
+		}
+		str++;
+	}
+}
+ 19e:	df 91       	pop	r29
+ 1a0:	cf 91       	pop	r28
+ 1a2:	08 95       	ret
+
+000001a4 <AUTO_ToggleOutputs>:
+
+//------------------------------ Toggling LED and BEZZER indicators
+void AUTO_ToggleOutputs(void)
+{
+	// Control LED IO with LED flag state
+    if(!flags.led_blink) {
+ 1a4:	80 91 98 00 	lds	r24, 0x0098	; 0x800098 <flags>
+ 1a8:	81 11       	cpse	r24, r1
+ 1aa:	01 c0       	rjmp	.+2      	; 0x1ae <AUTO_ToggleOutputs+0xa>
+        TICK_LED_OFF();
+ 1ac:	93 98       	cbi	0x12, 3	; 18
+    }
+
+	// Control BUZZER IO with BUZZER flag state and BUZZER cycle counter
+    if(flags.buzzer_blink && buzzer_cycle--) {
+ 1ae:	80 91 99 00 	lds	r24, 0x0099	; 0x800099 <flags+0x1>
+ 1b2:	88 23       	and	r24, r24
+ 1b4:	69 f0       	breq	.+26     	; 0x1d0 <AUTO_ToggleOutputs+0x2c>
+ 1b6:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__data_start>
+ 1ba:	9f ef       	ldi	r25, 0xFF	; 255
+ 1bc:	98 0f       	add	r25, r24
+ 1be:	90 93 60 00 	sts	0x0060, r25	; 0x800060 <__data_start>
+ 1c2:	88 23       	and	r24, r24
+ 1c4:	29 f0       	breq	.+10     	; 0x1d0 <AUTO_ToggleOutputs+0x2c>
+        BUZZER_TOGGLE();
+ 1c6:	92 b3       	in	r25, 0x12	; 18
+ 1c8:	80 e2       	ldi	r24, 0x20	; 32
+ 1ca:	89 27       	eor	r24, r25
+ 1cc:	82 bb       	out	0x12, r24	; 18
+ 1ce:	06 c0       	rjmp	.+12     	; 0x1dc <AUTO_ToggleOutputs+0x38>
+    } else {
+        BUZZER_OFF();
+ 1d0:	95 98       	cbi	0x12, 5	; 18
+		// Reload BUZZER cycle counter
+        buzzer_cycle=(BUZZER_BEEP_COUNT * 2);
+ 1d2:	8a e0       	ldi	r24, 0x0A	; 10
+ 1d4:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+		// Flush BUZZER flag
+        flags.buzzer_blink=0;
+ 1d8:	10 92 99 00 	sts	0x0099, r1	; 0x800099 <flags+0x1>
+    }
+	// Run this task every ~500ms
+    RTOS_SetTimerTask(AUTO_ToggleOutputs, 500);
+ 1dc:	64 ef       	ldi	r22, 0xF4	; 244
+ 1de:	71 e0       	ldi	r23, 0x01	; 1
+ 1e0:	82 ed       	ldi	r24, 0xD2	; 210
+ 1e2:	90 e0       	ldi	r25, 0x00	; 0
+ 1e4:	07 c2       	rjmp	.+1038   	; 0x5f4 <RTOS_SetTimerTask>
+
+000001e6 <keyProcessing>:
+
+//------------------------------ Key code processing
+void keyProcessing(void)
+{
+	// Processing button events
+	if(encoder.button.event == BUTTON_EVENT_SHORT_PRESS) {
+ 1e6:	90 91 95 00 	lds	r25, 0x0095	; 0x800095 <encoder+0x2>
+ 1ea:	80 91 92 00 	lds	r24, 0x0092	; 0x800092 <timer+0x3>
+ 1ee:	91 30       	cpi	r25, 0x01	; 1
+ 1f0:	21 f5       	brne	.+72     	; 0x23a <keyProcessing+0x54>
+		// Event: short click detected
+		// Processing with mode
+		if(timer.mode != MODE_NORMAL) {
+ 1f2:	88 23       	and	r24, r24
+ 1f4:	59 f0       	breq	.+22     	; 0x20c <keyProcessing+0x26>
+			//> Mode is setting time
+			// Set next mode
+			switch(timer.mode) {
+ 1f6:	81 30       	cpi	r24, 0x01	; 1
+ 1f8:	21 f0       	breq	.+8      	; 0x202 <keyProcessing+0x1c>
+ 1fa:	82 30       	cpi	r24, 0x02	; 2
+ 1fc:	21 f4       	brne	.+8      	; 0x206 <keyProcessing+0x20>
+				case MODE_SET_TIMER_SECONDS: timer.mode = MODE_SET_TIMER_MINUTES; break;
+				case MODE_SET_TIMER_MINUTES: timer.mode = MODE_SET_TIMER_HOURS; break;
+ 1fe:	83 e0       	ldi	r24, 0x03	; 3
+ 200:	26 c0       	rjmp	.+76     	; 0x24e <keyProcessing+0x68>
+		// Processing with mode
+		if(timer.mode != MODE_NORMAL) {
+			//> Mode is setting time
+			// Set next mode
+			switch(timer.mode) {
+				case MODE_SET_TIMER_SECONDS: timer.mode = MODE_SET_TIMER_MINUTES; break;
+ 202:	82 e0       	ldi	r24, 0x02	; 2
+ 204:	24 c0       	rjmp	.+72     	; 0x24e <keyProcessing+0x68>
+				case MODE_SET_TIMER_MINUTES: timer.mode = MODE_SET_TIMER_HOURS; break;
+				default: timer.mode = MODE_NORMAL; break;
+ 206:	10 92 92 00 	sts	0x0092, r1	; 0x800092 <timer+0x3>
+ 20a:	37 c0       	rjmp	.+110    	; 0x27a <keyProcessing+0x94>
+			}
+		} else {
+			//> Mode is NORMAL
+            // Check Timer time more than zero
+            uint8_t t = (timer.time[SECONDS] + timer.time[MINUTES] + timer.time[HOURS]);
+            if(t) {
+ 20c:	20 91 91 00 	lds	r18, 0x0091	; 0x800091 <timer+0x2>
+ 210:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <timer+0x1>
+ 214:	82 0f       	add	r24, r18
+ 216:	20 91 8f 00 	lds	r18, 0x008F	; 0x80008f <timer>
+ 21a:	82 0f       	add	r24, r18
+ 21c:	71 f1       	breq	.+92     	; 0x27a <keyProcessing+0x94>
+                // Start timer tick
+                //TIMER_TICK_INTERRUPT_TOGGLE();
+				TIMER_TICK_TOGGLE();
+ 21e:	2e b5       	in	r18, 0x2e	; 46
+ 220:	8d e0       	ldi	r24, 0x0D	; 13
+ 222:	82 27       	eor	r24, r18
+ 224:	8e bd       	out	0x2e, r24	; 46
+                //
+                flags.led_blink ^= 0x1;
+ 226:	80 91 98 00 	lds	r24, 0x0098	; 0x800098 <flags>
+ 22a:	98 27       	eor	r25, r24
+ 22c:	90 93 98 00 	sts	0x0098, r25	; 0x800098 <flags>
+				// Relay switch ON
+				RELAY_TOGGLE();
+ 230:	92 b3       	in	r25, 0x12	; 18
+ 232:	80 e1       	ldi	r24, 0x10	; 16
+ 234:	89 27       	eor	r24, r25
+ 236:	82 bb       	out	0x12, r24	; 18
+ 238:	20 c0       	rjmp	.+64     	; 0x27a <keyProcessing+0x94>
+            }
+		}
+	} else {
+		// Event: long click detected
+		// Set next action
+		switch(timer.mode) {
+ 23a:	81 30       	cpi	r24, 0x01	; 1
+ 23c:	59 f0       	breq	.+22     	; 0x254 <keyProcessing+0x6e>
+ 23e:	18 f0       	brcs	.+6      	; 0x246 <keyProcessing+0x60>
+ 240:	83 30       	cpi	r24, 0x03	; 3
+ 242:	91 f0       	breq	.+36     	; 0x268 <keyProcessing+0x82>
+ 244:	1a c0       	rjmp	.+52     	; 0x27a <keyProcessing+0x94>
+			// Go to seconds setup mode
+			case MODE_NORMAL:
+				if(!TIMER_TICK_CHECK) {
+ 246:	8e b5       	in	r24, 0x2e	; 46
+ 248:	8d 70       	andi	r24, 0x0D	; 13
+ 24a:	b9 f4       	brne	.+46     	; 0x27a <keyProcessing+0x94>
+					timer.mode = MODE_SET_TIMER_SECONDS;
+ 24c:	81 e0       	ldi	r24, 0x01	; 1
+ 24e:	80 93 92 00 	sts	0x0092, r24	; 0x800092 <timer+0x3>
+ 252:	13 c0       	rjmp	.+38     	; 0x27a <keyProcessing+0x94>
+				}
+				break;
+			// Go to loading timer value from EEPROM
+            case MODE_SET_TIMER_SECONDS:
+                // Waiting for EEPROM ready
+                while(!eeprom_is_ready());
+ 254:	e1 99       	sbic	0x1c, 1	; 28
+ 256:	fe cf       	rjmp	.-4      	; 0x254 <keyProcessing+0x6e>
+                // Read data block
+                eeprom_read_block(&timer.time, &EE_timer_value, sizeof(timer.time));
+ 258:	43 e0       	ldi	r20, 0x03	; 3
+ 25a:	50 e0       	ldi	r21, 0x00	; 0
+ 25c:	60 e0       	ldi	r22, 0x00	; 0
+ 25e:	70 e0       	ldi	r23, 0x00	; 0
+ 260:	8f e8       	ldi	r24, 0x8F	; 143
+ 262:	90 e0       	ldi	r25, 0x00	; 0
+ 264:	a2 d2       	rcall	.+1348   	; 0x7aa <eeprom_read_block>
+                break;
+ 266:	09 c0       	rjmp	.+18     	; 0x27a <keyProcessing+0x94>
+			// Go to saving timer value in EEPROM
+            case MODE_SET_TIMER_HOURS:
+                // Waiting for EEPROM ready
+                while(!eeprom_is_ready());
+ 268:	e1 99       	sbic	0x1c, 1	; 28
+ 26a:	fe cf       	rjmp	.-4      	; 0x268 <keyProcessing+0x82>
+                // Write data block
+                eeprom_write_block(&timer.time, &EE_timer_value, sizeof(timer.time));
+ 26c:	43 e0       	ldi	r20, 0x03	; 3
+ 26e:	50 e0       	ldi	r21, 0x00	; 0
+ 270:	60 e0       	ldi	r22, 0x00	; 0
+ 272:	70 e0       	ldi	r23, 0x00	; 0
+ 274:	8f e8       	ldi	r24, 0x8F	; 143
+ 276:	90 e0       	ldi	r25, 0x00	; 0
+ 278:	a6 d2       	rcall	.+1356   	; 0x7c6 <eeprom_write_block>
+			// Nothing to do
+			default: break;
+		}
+	}
+	// Flush button event
+	encoder.button.event = BUTTON_EVENT_NOT_PRESSED;
+ 27a:	10 92 95 00 	sts	0x0095, r1	; 0x800095 <encoder+0x2>
+ 27e:	08 95       	ret
+
+00000280 <AUTO_DisplayUpdater>:
+	encoder.value=0;
+}
+
+//------------------------------ Display update function
+void AUTO_DisplayUpdater(void)
+{
+ 280:	0f 93       	push	r16
+ 282:	1f 93       	push	r17
+ 284:	cf 93       	push	r28
+ 286:	df 93       	push	r29
+ 288:	cd b7       	in	r28, 0x3d	; 61
+ 28a:	dd 27       	eor	r29, r29
+ 28c:	c4 50       	subi	r28, 0x04	; 4
+ 28e:	cd bf       	out	0x3d, r28	; 61
+	char buffer[4];
+
+	// Moving cursor to second string begin
+	hd44780_GoToXY(1, 0);
+ 290:	60 e0       	ldi	r22, 0x00	; 0
+ 292:	81 e0       	ldi	r24, 0x01	; 1
+ 294:	5c df       	rcall	.-328    	; 0x14e <hd44780_GoToXY>
+ 296:	0f e8       	ldi	r16, 0x8F	; 143
+ 298:	10 e0       	ldi	r17, 0x00	; 0
+    // Update data on display in all time positions
+    uint8_t i=0;
+    do {
+        // Update value with conversation
+        hd44780_Puts(utoa_cycle_sub(timer.time[i], buffer));
+ 29a:	be 01       	movw	r22, r28
+ 29c:	6f 5f       	subi	r22, 0xFF	; 255
+ 29e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 2a0:	f8 01       	movw	r30, r16
+ 2a2:	81 91       	ld	r24, Z+
+ 2a4:	8f 01       	movw	r16, r30
+ 2a6:	3c d2       	rcall	.+1144   	; 0x720 <utoa_cycle_sub>
+ 2a8:	63 df       	rcall	.-314    	; 0x170 <hd44780_Puts>
+        // If the current position is not the end, print char ":"
+        if(i++ != 2) hd44780_Puts(":");
+ 2aa:	f0 e0       	ldi	r31, 0x00	; 0
+ 2ac:	02 39       	cpi	r16, 0x92	; 146
+ 2ae:	1f 07       	cpc	r17, r31
+ 2b0:	21 f0       	breq	.+8      	; 0x2ba <AUTO_DisplayUpdater+0x3a>
+ 2b2:	87 e6       	ldi	r24, 0x67	; 103
+ 2b4:	90 e0       	ldi	r25, 0x00	; 0
+ 2b6:	5c df       	rcall	.-328    	; 0x170 <hd44780_Puts>
+ 2b8:	f0 cf       	rjmp	.-32     	; 0x29a <AUTO_DisplayUpdater+0x1a>
+    } while(i<3);
+
+    // Cursor visibility rule
+	if(timer.mode != MODE_NORMAL) {
+ 2ba:	80 91 92 00 	lds	r24, 0x0092	; 0x800092 <timer+0x3>
+ 2be:	88 23       	and	r24, r24
+ 2c0:	81 f0       	breq	.+32     	; 0x2e2 <AUTO_DisplayUpdater+0x62>
+        // Show squared cursor in SET TIMER modes
+		hd44780_SendCmd(HD44780_OPT_DISPLAY_ENABLE | HD44780_OPT_CURSOR_VISIBLE | HD44780_OPT_CURSOR_IS_SQUARE);
+ 2c2:	8f e0       	ldi	r24, 0x0F	; 15
+ 2c4:	fe de       	rcall	.-516    	; 0xc2 <hd44780_SendCmd>
+        // Cursor position selector by modes
+        uint8_t position=1;
+        switch(timer.mode) {
+ 2c6:	80 91 92 00 	lds	r24, 0x0092	; 0x800092 <timer+0x3>
+ 2ca:	81 30       	cpi	r24, 0x01	; 1
+ 2cc:	21 f0       	breq	.+8      	; 0x2d6 <AUTO_DisplayUpdater+0x56>
+ 2ce:	82 30       	cpi	r24, 0x02	; 2
+ 2d0:	21 f4       	brne	.+8      	; 0x2da <AUTO_DisplayUpdater+0x5a>
+            //00:00:00//
+            // |: |: |//
+            //01234567// <- Position index
+            ////////////
+            case MODE_SET_TIMER_SECONDS: position=7; break;
+            case MODE_SET_TIMER_MINUTES: position=4; break;
+ 2d2:	64 e0       	ldi	r22, 0x04	; 4
+ 2d4:	03 c0       	rjmp	.+6      	; 0x2dc <AUTO_DisplayUpdater+0x5c>
+            ////////////
+            //00:00:00//
+            // |: |: |//
+            //01234567// <- Position index
+            ////////////
+            case MODE_SET_TIMER_SECONDS: position=7; break;
+ 2d6:	67 e0       	ldi	r22, 0x07	; 7
+ 2d8:	01 c0       	rjmp	.+2      	; 0x2dc <AUTO_DisplayUpdater+0x5c>
+    // Cursor visibility rule
+	if(timer.mode != MODE_NORMAL) {
+        // Show squared cursor in SET TIMER modes
+		hd44780_SendCmd(HD44780_OPT_DISPLAY_ENABLE | HD44780_OPT_CURSOR_VISIBLE | HD44780_OPT_CURSOR_IS_SQUARE);
+        // Cursor position selector by modes
+        uint8_t position=1;
+ 2da:	61 e0       	ldi	r22, 0x01	; 1
+            ////////////
+            case MODE_SET_TIMER_SECONDS: position=7; break;
+            case MODE_SET_TIMER_MINUTES: position=4; break;
+            default: break;
+        }
+        hd44780_GoToXY(1, position);
+ 2dc:	81 e0       	ldi	r24, 0x01	; 1
+ 2de:	37 df       	rcall	.-402    	; 0x14e <hd44780_GoToXY>
+ 2e0:	02 c0       	rjmp	.+4      	; 0x2e6 <AUTO_DisplayUpdater+0x66>
+	} else {
+        // Hide cursor in NORMAL mode
+		hd44780_SendCmd(HD44780_OPT_DISPLAY_ENABLE | HD44780_OPT_CURSOR_INVISIBLE);
+ 2e2:	8c e0       	ldi	r24, 0x0C	; 12
+ 2e4:	ee de       	rcall	.-548    	; 0xc2 <hd44780_SendCmd>
+	}
+    // Run this function every ~200ms
+	RTOS_SetTimerTask(AUTO_DisplayUpdater, 100);
+ 2e6:	64 e6       	ldi	r22, 0x64	; 100
+ 2e8:	70 e0       	ldi	r23, 0x00	; 0
+ 2ea:	80 e4       	ldi	r24, 0x40	; 64
+ 2ec:	91 e0       	ldi	r25, 0x01	; 1
+ 2ee:	82 d1       	rcall	.+772    	; 0x5f4 <RTOS_SetTimerTask>
+}
+ 2f0:	cc 5f       	subi	r28, 0xFC	; 252
+ 2f2:	cd bf       	out	0x3d, r28	; 61
+ 2f4:	df 91       	pop	r29
+ 2f6:	cf 91       	pop	r28
+ 2f8:	1f 91       	pop	r17
+ 2fa:	0f 91       	pop	r16
+ 2fc:	08 95       	ret
+
+000002fe <AUTO_KeyScan>:
+
+//------------------------------ Check button state
+void AUTO_KeyScan(void)
+{
+    // Processing button state NOT PRESSED(UP)
+	if(encoder.button.state == BUTTON_STATE_UP) {
+ 2fe:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <encoder+0x3>
+ 302:	81 11       	cpse	r24, r1
+ 304:	14 c0       	rjmp	.+40     	; 0x32e <AUTO_KeyScan+0x30>
+ 306:	80 91 95 00 	lds	r24, 0x0095	; 0x800095 <encoder+0x2>
+		// Check key state
+		if(BTN_PRESSED) {
+ 30a:	82 99       	sbic	0x10, 2	; 16
+ 30c:	0a c0       	rjmp	.+20     	; 0x322 <AUTO_KeyScan+0x24>
+			// Button is pressed
+			// Set current state to PRESSED(DN)
+			encoder.button.state = BUTTON_STATE_DN;
+ 30e:	91 e0       	ldi	r25, 0x01	; 1
+ 310:	90 93 96 00 	sts	0x0096, r25	; 0x800096 <encoder+0x3>
+			// Flush pressed state timer
+            encoder.button.time = 0;
+ 314:	10 92 97 00 	sts	0x0097, r1	; 0x800097 <encoder+0x4>
+            // If key pressed event was not processed
+            if(!encoder.button.event) {
+ 318:	81 11       	cpse	r24, r1
+ 31a:	28 c0       	rjmp	.+80     	; 0x36c <AUTO_KeyScan+0x6e>
+                // Set flag to SHORT click
+                encoder.button.event = BUTTON_EVENT_SHORT_PRESS;
+ 31c:	90 93 95 00 	sts	0x0095, r25	; 0x800095 <encoder+0x2>
+ 320:	25 c0       	rjmp	.+74     	; 0x36c <AUTO_KeyScan+0x6e>
+            }
+		} else if(encoder.button.event) {
+ 322:	88 23       	and	r24, r24
+ 324:	19 f1       	breq	.+70     	; 0x36c <AUTO_KeyScan+0x6e>
+            // If key not pressed, but set event
+			// Run task with key processing
+			RTOS_SetTask(keyProcessing);
+ 326:	83 ef       	ldi	r24, 0xF3	; 243
+ 328:	90 e0       	ldi	r25, 0x00	; 0
+ 32a:	4b d1       	rcall	.+662    	; 0x5c2 <RTOS_SetTask>
+ 32c:	1f c0       	rjmp	.+62     	; 0x36c <AUTO_KeyScan+0x6e>
+		}
+	// Processing button state PRESSED(DN)
+	} else if(encoder.button.state == BUTTON_STATE_DN) {
+ 32e:	81 30       	cpi	r24, 0x01	; 1
+ 330:	99 f4       	brne	.+38     	; 0x358 <AUTO_KeyScan+0x5a>
+		// Check key state
+		if(BTN_PRESSED) {
+ 332:	82 99       	sbic	0x10, 2	; 16
+ 334:	0c c0       	rjmp	.+24     	; 0x34e <AUTO_KeyScan+0x50>
+			// If timer long click not tick yet
+			if(encoder.button.time < 30) {
+ 336:	80 91 97 00 	lds	r24, 0x0097	; 0x800097 <encoder+0x4>
+ 33a:	8e 31       	cpi	r24, 0x1E	; 30
+ 33c:	20 f4       	brcc	.+8      	; 0x346 <AUTO_KeyScan+0x48>
+				// Increment timer
+                encoder.button.time++;
+ 33e:	8f 5f       	subi	r24, 0xFF	; 255
+ 340:	80 93 97 00 	sts	0x0097, r24	; 0x800097 <encoder+0x4>
+ 344:	13 c0       	rjmp	.+38     	; 0x36c <AUTO_KeyScan+0x6e>
+			    // Else
+			} else {
+				// Flush long click
+                encoder.button.time = 0;
+ 346:	10 92 97 00 	sts	0x0097, r1	; 0x800097 <encoder+0x4>
+				// Set current state to LONG PRESSED(AL)
+				encoder.button.event = BUTTON_STATE_AL;
+ 34a:	82 e0       	ldi	r24, 0x02	; 2
+ 34c:	0d c0       	rjmp	.+26     	; 0x368 <AUTO_KeyScan+0x6a>
+			}
+		// If key not pressed yet
+		} else {
+			// Set current state to NOT PRESSED(UP)
+            encoder.button.state = BUTTON_STATE_UP;
+ 34e:	10 92 96 00 	sts	0x0096, r1	; 0x800096 <encoder+0x3>
+			// Flush pressed state timer
+            encoder.button.time = 0;
+ 352:	10 92 97 00 	sts	0x0097, r1	; 0x800097 <encoder+0x4>
+ 356:	0a c0       	rjmp	.+20     	; 0x36c <AUTO_KeyScan+0x6e>
+		}
+	// Processing button state LONG PRESSED(AL)
+	} else if(encoder.button.state == BUTTON_STATE_AL) {
+ 358:	82 30       	cpi	r24, 0x02	; 2
+ 35a:	41 f4       	brne	.+16     	; 0x36c <AUTO_KeyScan+0x6e>
+		// Waiting while key will not be pressed
+		if(!BTN_PRESSED) {
+ 35c:	82 9b       	sbis	0x10, 2	; 16
+ 35e:	06 c0       	rjmp	.+12     	; 0x36c <AUTO_KeyScan+0x6e>
+			// Set current state to NOT PRESSED(UP)
+            encoder.button.state = BUTTON_STATE_UP;
+ 360:	10 92 96 00 	sts	0x0096, r1	; 0x800096 <encoder+0x3>
+			// Flush pressed state timer
+            encoder.button.time = 0;
+ 364:	10 92 97 00 	sts	0x0097, r1	; 0x800097 <encoder+0x4>
+			// Set flag to LONG click
+            encoder.button.event = BUTTON_EVENT_LONG_PRESS;
+ 368:	80 93 95 00 	sts	0x0095, r24	; 0x800095 <encoder+0x2>
+		}
+	}
+	// Run this process with periodic ~20ms
+	RTOS_SetTimerTask(AUTO_KeyScan, 20);
+ 36c:	64 e1       	ldi	r22, 0x14	; 20
+ 36e:	70 e0       	ldi	r23, 0x00	; 0
+ 370:	8f e7       	ldi	r24, 0x7F	; 127
+ 372:	91 e0       	ldi	r25, 0x01	; 1
+ 374:	3f c1       	rjmp	.+638    	; 0x5f4 <RTOS_SetTimerTask>
+
+00000376 <AUTO_EncoderScan>:
+
+//------------------------------ Check encoder state
+void AUTO_EncoderScan(void)
+{
+    // Getting current encoder pin state
+    uint8_t curr_state = ENC_STATE;
+ 376:	80 b3       	in	r24, 0x10	; 16
+ 378:	83 70       	andi	r24, 0x03	; 3
+    // Processing state
+    switch(encoder.prev_state) {
+ 37a:	20 91 93 00 	lds	r18, 0x0093	; 0x800093 <encoder>
+ 37e:	90 91 94 00 	lds	r25, 0x0094	; 0x800094 <encoder+0x1>
+ 382:	21 30       	cpi	r18, 0x01	; 1
+ 384:	99 f0       	breq	.+38     	; 0x3ac <AUTO_EncoderScan+0x36>
+ 386:	1c f4       	brge	.+6      	; 0x38e <AUTO_EncoderScan+0x18>
+ 388:	22 23       	and	r18, r18
+ 38a:	31 f0       	breq	.+12     	; 0x398 <AUTO_EncoderScan+0x22>
+ 38c:	1d c0       	rjmp	.+58     	; 0x3c8 <AUTO_EncoderScan+0x52>
+ 38e:	22 30       	cpi	r18, 0x02	; 2
+ 390:	91 f0       	breq	.+36     	; 0x3b6 <AUTO_EncoderScan+0x40>
+ 392:	23 30       	cpi	r18, 0x03	; 3
+ 394:	a9 f0       	breq	.+42     	; 0x3c0 <AUTO_EncoderScan+0x4a>
+ 396:	18 c0       	rjmp	.+48     	; 0x3c8 <AUTO_EncoderScan+0x52>
+        case 0:
+            if(curr_state == 2) encoder.value++;
+ 398:	82 30       	cpi	r24, 0x02	; 2
+ 39a:	11 f4       	brne	.+4      	; 0x3a0 <AUTO_EncoderScan+0x2a>
+ 39c:	9f 5f       	subi	r25, 0xFF	; 255
+ 39e:	03 c0       	rjmp	.+6      	; 0x3a6 <AUTO_EncoderScan+0x30>
+            if(curr_state == 1) encoder.value--;
+ 3a0:	81 30       	cpi	r24, 0x01	; 1
+ 3a2:	91 f4       	brne	.+36     	; 0x3c8 <AUTO_EncoderScan+0x52>
+ 3a4:	91 50       	subi	r25, 0x01	; 1
+ 3a6:	90 93 94 00 	sts	0x0094, r25	; 0x800094 <encoder+0x1>
+ 3aa:	0e c0       	rjmp	.+28     	; 0x3c8 <AUTO_EncoderScan+0x52>
+            break;
+
+        case 1:
+            if(curr_state == 0) encoder.value++;
+ 3ac:	88 23       	and	r24, r24
+ 3ae:	b1 f3       	breq	.-20     	; 0x39c <AUTO_EncoderScan+0x26>
+            if(curr_state == 3) encoder.value--;
+ 3b0:	83 30       	cpi	r24, 0x03	; 3
+ 3b2:	c1 f3       	breq	.-16     	; 0x3a4 <AUTO_EncoderScan+0x2e>
+ 3b4:	09 c0       	rjmp	.+18     	; 0x3c8 <AUTO_EncoderScan+0x52>
+            break;
+
+        case 2:
+            if(curr_state == 3) encoder.value++;
+ 3b6:	83 30       	cpi	r24, 0x03	; 3
+ 3b8:	89 f3       	breq	.-30     	; 0x39c <AUTO_EncoderScan+0x26>
+            if(curr_state == 0) encoder.value--;
+ 3ba:	88 23       	and	r24, r24
+ 3bc:	99 f3       	breq	.-26     	; 0x3a4 <AUTO_EncoderScan+0x2e>
+ 3be:	04 c0       	rjmp	.+8      	; 0x3c8 <AUTO_EncoderScan+0x52>
+            break;
+
+        case 3:
+            if(curr_state == 1) encoder.value++;
+ 3c0:	81 30       	cpi	r24, 0x01	; 1
+ 3c2:	61 f3       	breq	.-40     	; 0x39c <AUTO_EncoderScan+0x26>
+            if(curr_state == 2) encoder.value--;
+ 3c4:	82 30       	cpi	r24, 0x02	; 2
+ 3c6:	71 f3       	breq	.-36     	; 0x3a4 <AUTO_EncoderScan+0x2e>
+            break;
+    }
+    // Save last state of encoder pin
+    encoder.prev_state = curr_state;
+ 3c8:	80 93 93 00 	sts	0x0093, r24	; 0x800093 <encoder>
+    // If counter not null
+    //if(encoder.value != 0) {
+	if(encoder.value > 3 || encoder.value < -3) {
+ 3cc:	80 91 94 00 	lds	r24, 0x0094	; 0x800094 <encoder+0x1>
+ 3d0:	8d 5f       	subi	r24, 0xFD	; 253
+ 3d2:	87 30       	cpi	r24, 0x07	; 7
+ 3d4:	18 f0       	brcs	.+6      	; 0x3dc <AUTO_EncoderScan+0x66>
+        RTOS_SetTask(encProcessing);
+ 3d6:	81 e1       	ldi	r24, 0x11	; 17
+ 3d8:	92 e0       	ldi	r25, 0x02	; 2
+ 3da:	f3 d0       	rcall	.+486    	; 0x5c2 <RTOS_SetTask>
+    }
+    // Set timer task to autostart this scan procedure every 1ms
+    RTOS_SetTimerTask(AUTO_EncoderScan, 1);
+ 3dc:	61 e0       	ldi	r22, 0x01	; 1
+ 3de:	70 e0       	ldi	r23, 0x00	; 0
+ 3e0:	8b eb       	ldi	r24, 0xBB	; 187
+ 3e2:	91 e0       	ldi	r25, 0x01	; 1
+ 3e4:	07 c1       	rjmp	.+526    	; 0x5f4 <RTOS_SetTimerTask>
+
+000003e6 <changeValueInPosition>:
+}
+
+//------------------------------ Change time value in position(seconds, minutes, hours)
+void changeValueInPosition(uint8_t p)
+{
+	timer.time[p] += (encoder.value >> 2);
+ 3e6:	e8 2f       	mov	r30, r24
+ 3e8:	f0 e0       	ldi	r31, 0x00	; 0
+ 3ea:	80 91 94 00 	lds	r24, 0x0094	; 0x800094 <encoder+0x1>
+ 3ee:	85 95       	asr	r24
+ 3f0:	85 95       	asr	r24
+ 3f2:	df 01       	movw	r26, r30
+ 3f4:	a1 57       	subi	r26, 0x71	; 113
+ 3f6:	bf 4f       	sbci	r27, 0xFF	; 255
+ 3f8:	9c 91       	ld	r25, X
+ 3fa:	89 0f       	add	r24, r25
+	uint8_t max_value = pgm_read_byte(max_time_values + p);
+ 3fc:	e6 5d       	subi	r30, 0xD6	; 214
+ 3fe:	ff 4f       	sbci	r31, 0xFF	; 255
+ 400:	e4 91       	lpm	r30, Z
+	if(timer.time[p] > max_value) timer.time[p] = 0;
+ 402:	48 2f       	mov	r20, r24
+ 404:	08 2e       	mov	r0, r24
+ 406:	00 0c       	add	r0, r0
+ 408:	55 0b       	sbc	r21, r21
+ 40a:	2e 2f       	mov	r18, r30
+ 40c:	30 e0       	ldi	r19, 0x00	; 0
+ 40e:	24 17       	cp	r18, r20
+ 410:	35 07       	cpc	r19, r21
+ 412:	14 f0       	brlt	.+4      	; 0x418 <__LOCK_REGION_LENGTH__+0x18>
+}
+
+//------------------------------ Change time value in position(seconds, minutes, hours)
+void changeValueInPosition(uint8_t p)
+{
+	timer.time[p] += (encoder.value >> 2);
+ 414:	8c 93       	st	X, r24
+ 416:	01 c0       	rjmp	.+2      	; 0x41a <__LOCK_REGION_LENGTH__+0x1a>
+	uint8_t max_value = pgm_read_byte(max_time_values + p);
+	if(timer.time[p] > max_value) timer.time[p] = 0;
+ 418:	1c 92       	st	X, r1
+	if(timer.time[p] < 0) timer.time[p] = max_value;
+ 41a:	8c 91       	ld	r24, X
+ 41c:	87 fd       	sbrc	r24, 7
+ 41e:	ec 93       	st	X, r30
+ 420:	08 95       	ret
+
+00000422 <encProcessing>:
+
+//------------------------------ Encoder value processing
+void encProcessing(void)
+{
+	// Processing value change with mode
+	switch(timer.mode) {
+ 422:	80 91 92 00 	lds	r24, 0x0092	; 0x800092 <timer+0x3>
+ 426:	82 30       	cpi	r24, 0x02	; 2
+ 428:	31 f0       	breq	.+12     	; 0x436 <encProcessing+0x14>
+ 42a:	83 30       	cpi	r24, 0x03	; 3
+ 42c:	31 f0       	breq	.+12     	; 0x43a <encProcessing+0x18>
+ 42e:	81 30       	cpi	r24, 0x01	; 1
+ 430:	31 f4       	brne	.+12     	; 0x43e <encProcessing+0x1c>
+        // Change value in SECONDS position
+		case MODE_SET_TIMER_SECONDS: changeValueInPosition(SECONDS); break;
+ 432:	82 e0       	ldi	r24, 0x02	; 2
+ 434:	03 c0       	rjmp	.+6      	; 0x43c <encProcessing+0x1a>
+        // Change value in MINUTES position
+		case MODE_SET_TIMER_MINUTES: changeValueInPosition(MINUTES); break;
+ 436:	81 e0       	ldi	r24, 0x01	; 1
+ 438:	01 c0       	rjmp	.+2      	; 0x43c <encProcessing+0x1a>
+        // Change value in HOURS position
+		case MODE_SET_TIMER_HOURS: changeValueInPosition(HOURS); break;
+ 43a:	80 e0       	ldi	r24, 0x00	; 0
+ 43c:	d4 df       	rcall	.-88     	; 0x3e6 <changeValueInPosition>
+        // Other
+		default: break;
+	}
+    // Flush encoder value after processing
+	encoder.value=0;
+ 43e:	10 92 94 00 	sts	0x0094, r1	; 0x800094 <encoder+0x1>
+ 442:	08 95       	ret
+
+00000444 <__vector_13>:
+	BUZZER_INIT();
+}
+
+//------------------------------ Interrupt timer for RTOS
+ISR(TIMER0_COMPA_vect)
+{
+ 444:	1f 92       	push	r1
+ 446:	0f 92       	push	r0
+ 448:	0f b6       	in	r0, 0x3f	; 63
+ 44a:	0f 92       	push	r0
+ 44c:	11 24       	eor	r1, r1
+ 44e:	2f 93       	push	r18
+ 450:	3f 93       	push	r19
+ 452:	4f 93       	push	r20
+ 454:	5f 93       	push	r21
+ 456:	6f 93       	push	r22
+ 458:	7f 93       	push	r23
+ 45a:	8f 93       	push	r24
+ 45c:	9f 93       	push	r25
+ 45e:	af 93       	push	r26
+ 460:	bf 93       	push	r27
+ 462:	ef 93       	push	r30
+ 464:	ff 93       	push	r31
+	RTOS_TimerService();
+ 466:	29 d1       	rcall	.+594    	; 0x6ba <RTOS_TimerService>
+}
+ 468:	ff 91       	pop	r31
+ 46a:	ef 91       	pop	r30
+ 46c:	bf 91       	pop	r27
+ 46e:	af 91       	pop	r26
+ 470:	9f 91       	pop	r25
+ 472:	8f 91       	pop	r24
+ 474:	7f 91       	pop	r23
+ 476:	6f 91       	pop	r22
+ 478:	5f 91       	pop	r21
+ 47a:	4f 91       	pop	r20
+ 47c:	3f 91       	pop	r19
+ 47e:	2f 91       	pop	r18
+ 480:	0f 90       	pop	r0
+ 482:	0f be       	out	0x3f, r0	; 63
+ 484:	0f 90       	pop	r0
+ 486:	1f 90       	pop	r1
+ 488:	18 95       	reti
+
+0000048a <__vector_4>:
+
+ISR(TIMER1_COMPA_vect)
+{
+ 48a:	1f 92       	push	r1
+ 48c:	0f 92       	push	r0
+ 48e:	0f b6       	in	r0, 0x3f	; 63
+ 490:	0f 92       	push	r0
+ 492:	11 24       	eor	r1, r1
+ 494:	8f 93       	push	r24
+ 496:	9f 93       	push	r25
+	// Toggle TICK led
+	TICK_LED_TOGGLE();
+ 498:	92 b3       	in	r25, 0x12	; 18
+ 49a:	88 e0       	ldi	r24, 0x08	; 8
+ 49c:	89 27       	eor	r24, r25
+ 49e:	82 bb       	out	0x12, r24	; 18
+
+    // Time processing
+	if(timer.time[SECONDS] == 0) {
+ 4a0:	80 91 91 00 	lds	r24, 0x0091	; 0x800091 <timer+0x2>
+ 4a4:	81 11       	cpse	r24, r1
+ 4a6:	14 c0       	rjmp	.+40     	; 0x4d0 <__vector_4+0x46>
+		if(timer.time[MINUTES] == 0) {
+ 4a8:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <timer+0x1>
+ 4ac:	81 11       	cpse	r24, r1
+ 4ae:	0b c0       	rjmp	.+22     	; 0x4c6 <__vector_4+0x3c>
+			if(timer.time[HOURS] > 0) {
+ 4b0:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <timer>
+ 4b4:	18 16       	cp	r1, r24
+ 4b6:	7c f4       	brge	.+30     	; 0x4d6 <__vector_4+0x4c>
+				timer.time[HOURS]--;
+ 4b8:	81 50       	subi	r24, 0x01	; 1
+ 4ba:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <timer>
+                timer.time[MINUTES] = 59;
+ 4be:	8b e3       	ldi	r24, 0x3B	; 59
+ 4c0:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <timer+0x1>
+ 4c4:	06 c0       	rjmp	.+12     	; 0x4d2 <__vector_4+0x48>
+                timer.time[SECONDS] = 59;
+			}
+		} else {
+            timer.time[MINUTES]--;
+ 4c6:	81 50       	subi	r24, 0x01	; 1
+ 4c8:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <timer+0x1>
+            timer.time[SECONDS] = 59;
+ 4cc:	8b e3       	ldi	r24, 0x3B	; 59
+ 4ce:	01 c0       	rjmp	.+2      	; 0x4d2 <__vector_4+0x48>
+		}
+	} else {
+        timer.time[SECONDS]--;
+ 4d0:	81 50       	subi	r24, 0x01	; 1
+ 4d2:	80 93 91 00 	sts	0x0091, r24	; 0x800091 <timer+0x2>
+	}
+
+	// Detecting last second
+	uint8_t t = (timer.time[SECONDS] + timer.time[MINUTES] + timer.time[HOURS]);
+	if(!t) {
+ 4d6:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <timer+0x2>
+ 4da:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <timer+0x1>
+ 4de:	89 0f       	add	r24, r25
+ 4e0:	90 91 8f 00 	lds	r25, 0x008F	; 0x80008f <timer>
+ 4e4:	89 0f       	add	r24, r25
+ 4e6:	49 f4       	brne	.+18     	; 0x4fa <__vector_4+0x70>
+		// Relay switch OFF
+		RELAY_OFF();
+ 4e8:	94 98       	cbi	0x12, 4	; 18
+		// Set disable led flag
+		flags.led_blink = 0;
+ 4ea:	10 92 98 00 	sts	0x0098, r1	; 0x800098 <flags>
+		// Set enable buzzer flag
+		flags.buzzer_blink = 1;
+ 4ee:	81 e0       	ldi	r24, 0x01	; 1
+ 4f0:	80 93 99 00 	sts	0x0099, r24	; 0x800099 <flags+0x1>
+		// Stop timer tick
+		TIMER_TICK_STOP();
+ 4f4:	8e b5       	in	r24, 0x2e	; 46
+ 4f6:	82 7f       	andi	r24, 0xF2	; 242
+ 4f8:	8e bd       	out	0x2e, r24	; 46
+	}
+
+
+}
+ 4fa:	9f 91       	pop	r25
+ 4fc:	8f 91       	pop	r24
+ 4fe:	0f 90       	pop	r0
+ 500:	0f be       	out	0x3f, r0	; 63
+ 502:	0f 90       	pop	r0
+ 504:	1f 90       	pop	r1
+ 506:	18 95       	reti
+
+00000508 <main>:
+
+//------------------------------ Initialize MCU peripheral
+inline void MCU_Init(void)
+{
+	// Initialize RELAY IO
+	RELAY_INIT();
+ 508:	8c 9a       	sbi	0x11, 4	; 17
+ 50a:	94 98       	cbi	0x12, 4	; 18
+	// Initialize SYSTICK timer for RTOS
+	SYSTICK_TIMER_INIT();
+ 50c:	82 e0       	ldi	r24, 0x02	; 2
+ 50e:	80 bf       	out	0x30, r24	; 48
+ 510:	83 e0       	ldi	r24, 0x03	; 3
+ 512:	83 bf       	out	0x33, r24	; 51
+ 514:	8d e7       	ldi	r24, 0x7D	; 125
+ 516:	86 bf       	out	0x36, r24	; 54
+	SYSTICK_INTERRUPT_ENABLE();
+ 518:	89 b7       	in	r24, 0x39	; 57
+ 51a:	81 60       	ori	r24, 0x01	; 1
+ 51c:	89 bf       	out	0x39, r24	; 57
+	// Initialize timer for timer TICK
+	TIMER_TICK_INIT();
+ 51e:	1f bc       	out	0x2f, r1	; 47
+ 520:	1e bc       	out	0x2e, r1	; 46
+ 522:	84 e8       	ldi	r24, 0x84	; 132
+ 524:	9e e1       	ldi	r25, 0x1E	; 30
+ 526:	9b bd       	out	0x2b, r25	; 43
+ 528:	8a bd       	out	0x2a, r24	; 42
+	TIMER_TICK_INTERRUPT_ENABLE();
+ 52a:	1d bc       	out	0x2d, r1	; 45
+ 52c:	1c bc       	out	0x2c, r1	; 44
+ 52e:	89 b7       	in	r24, 0x39	; 57
+ 530:	80 64       	ori	r24, 0x40	; 64
+ 532:	89 bf       	out	0x39, r24	; 57
+	// Initialize ENCODER IO
+	ENC_INIT();
+ 534:	81 b3       	in	r24, 0x11	; 17
+ 536:	8c 7f       	andi	r24, 0xFC	; 252
+ 538:	81 bb       	out	0x11, r24	; 17
+	// Initialize BUTTON IO
+	BTN_INIT();
+ 53a:	8a 98       	cbi	0x11, 2	; 17
+	// Initialize TICK LED IO
+	TICK_LED_INIT();
+ 53c:	8b 9a       	sbi	0x11, 3	; 17
+ 53e:	93 98       	cbi	0x12, 3	; 18
+	// Initialize BUZZER IO
+	BUZZER_INIT();
+ 540:	8d 9a       	sbi	0x11, 5	; 17
+
+//------------------------------ MAIN WORK CYCLE
+int main(void)
+{
+	MCU_Init();
+	RTOS_Init();
+ 542:	15 d0       	rcall	.+42     	; 0x56e <RTOS_Init>
+	hd44780_Init();
+ 544:	d7 dd       	rcall	.-1106   	; 0xf4 <hd44780_Init>
+
+    sei();
+ 546:	78 94       	sei
+
+    hd44780_Clear();
+ 548:	ca dd       	rcall	.-1132   	; 0xde <hd44780_Clear>
+    hd44780_Puts(" Timer:");
+ 54a:	81 e6       	ldi	r24, 0x61	; 97
+ 54c:	90 e0       	ldi	r25, 0x00	; 0
+ 54e:	10 de       	rcall	.-992    	; 0x170 <hd44780_Puts>
+
+	// Run cycle encoder scan
+	RTOS_SetTask(AUTO_EncoderScan);
+ 550:	8b eb       	ldi	r24, 0xBB	; 187
+ 552:	91 e0       	ldi	r25, 0x01	; 1
+ 554:	36 d0       	rcall	.+108    	; 0x5c2 <RTOS_SetTask>
+	// Run cycle button scan
+	RTOS_SetTask(AUTO_KeyScan);
+ 556:	8f e7       	ldi	r24, 0x7F	; 127
+ 558:	91 e0       	ldi	r25, 0x01	; 1
+ 55a:	33 d0       	rcall	.+102    	; 0x5c2 <RTOS_SetTask>
+    // Run cylcle update LED and RELAY states
+    RTOS_SetTask(AUTO_ToggleOutputs);
+ 55c:	82 ed       	ldi	r24, 0xD2	; 210
+ 55e:	90 e0       	ldi	r25, 0x00	; 0
+ 560:	30 d0       	rcall	.+96     	; 0x5c2 <RTOS_SetTask>
+	// Run cycle display updater
+    RTOS_SetTask(AUTO_DisplayUpdater);
+ 562:	80 e4       	ldi	r24, 0x40	; 64
+ 564:	91 e0       	ldi	r25, 0x01	; 1
+ 566:	2d d0       	rcall	.+90     	; 0x5c2 <RTOS_SetTask>
+
+    while (1) {
+		RTOS_TaskManager();
+ 568:	75 d0       	rcall	.+234    	; 0x654 <RTOS_TaskManager>
+ 56a:	fe cf       	rjmp	.-4      	; 0x568 <main+0x60>
+
+0000056c <Idle>:
+
+/************************************************************************/
+/* IDLE function                                                        */
+/************************************************************************/
+inline void Idle(void)
+{
+ 56c:	08 95       	ret
+
+0000056e <RTOS_Init>:
+    uint8_t i=0;
+
+    // Initialization RTOS task queue
+    for(i=0; i < RTOS_TASK_QUEUE_SIZE; i++)
+    {
+        RTOS_TaskQueue[i] = Idle;
+ 56e:	86 eb       	ldi	r24, 0xB6	; 182
+ 570:	92 e0       	ldi	r25, 0x02	; 2
+ 572:	90 93 84 00 	sts	0x0084, r25	; 0x800084 <RTOS_TaskQueue+0x1>
+ 576:	80 93 83 00 	sts	0x0083, r24	; 0x800083 <RTOS_TaskQueue>
+ 57a:	90 93 86 00 	sts	0x0086, r25	; 0x800086 <RTOS_TaskQueue+0x3>
+ 57e:	80 93 85 00 	sts	0x0085, r24	; 0x800085 <RTOS_TaskQueue+0x2>
+ 582:	90 93 88 00 	sts	0x0088, r25	; 0x800088 <RTOS_TaskQueue+0x5>
+ 586:	80 93 87 00 	sts	0x0087, r24	; 0x800087 <RTOS_TaskQueue+0x4>
+ 58a:	90 93 8a 00 	sts	0x008A, r25	; 0x80008a <RTOS_TaskQueue+0x7>
+ 58e:	80 93 89 00 	sts	0x0089, r24	; 0x800089 <RTOS_TaskQueue+0x6>
+ 592:	90 93 8c 00 	sts	0x008C, r25	; 0x80008c <RTOS_TaskQueue+0x9>
+ 596:	80 93 8b 00 	sts	0x008B, r24	; 0x80008b <RTOS_TaskQueue+0x8>
+ 59a:	80 e0       	ldi	r24, 0x00	; 0
+ 59c:	90 e0       	ldi	r25, 0x00	; 0
+    }
+
+    // Initialization RTOS timer task queue
+    for(i=0; i < RTOS_TIMER_TASK_QUEUE_SIZE; i++)
+    {
+        RTOS_TimerTaskQueue[i].RunTask = Idle;
+ 59e:	26 eb       	ldi	r18, 0xB6	; 182
+ 5a0:	32 e0       	ldi	r19, 0x02	; 2
+ 5a2:	fc 01       	movw	r30, r24
+ 5a4:	ee 0f       	add	r30, r30
+ 5a6:	ff 1f       	adc	r31, r31
+ 5a8:	ee 0f       	add	r30, r30
+ 5aa:	ff 1f       	adc	r31, r31
+ 5ac:	e5 59       	subi	r30, 0x95	; 149
+ 5ae:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5b0:	31 83       	std	Z+1, r19	; 0x01
+ 5b2:	20 83       	st	Z, r18
+        RTOS_TimerTaskQueue[i].Time = 0;
+ 5b4:	13 82       	std	Z+3, r1	; 0x03
+ 5b6:	12 82       	std	Z+2, r1	; 0x02
+ 5b8:	01 96       	adiw	r24, 0x01	; 1
+    {
+        RTOS_TaskQueue[i] = Idle;
+    }
+
+    // Initialization RTOS timer task queue
+    for(i=0; i < RTOS_TIMER_TASK_QUEUE_SIZE; i++)
+ 5ba:	85 30       	cpi	r24, 0x05	; 5
+ 5bc:	91 05       	cpc	r25, r1
+ 5be:	89 f7       	brne	.-30     	; 0x5a2 <RTOS_Init+0x34>
+    {
+        RTOS_TimerTaskQueue[i].RunTask = Idle;
+        RTOS_TimerTaskQueue[i].Time = 0;
+    }
+}
+ 5c0:	08 95       	ret
+
+000005c2 <RTOS_SetTask>:
+
+/************************************************************************/
+/* RTOS Setup task into queue                                           */
+/************************************************************************/
+void RTOS_SetTask(TPTR TS)
+{
+ 5c2:	ac 01       	movw	r20, r24
+    uint8_t     i=0;
+    // Disable interrupts while processing queue
+    // if interrupt was enabled
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+ 5c4:	9f b7       	in	r25, 0x3f	; 63
+    return 1;
+}
+
+static __inline__ uint8_t __iCliRetVal(void)
+{
+    cli();
+ 5c6:	f8 94       	cli
+ 5c8:	20 e0       	ldi	r18, 0x00	; 0
+ 5ca:	30 e0       	ldi	r19, 0x00	; 0
+		// Checking queue free
+		while(RTOS_TaskQueue[i] != Idle)
+ 5cc:	f9 01       	movw	r30, r18
+ 5ce:	ee 0f       	add	r30, r30
+ 5d0:	ff 1f       	adc	r31, r31
+ 5d2:	ed 57       	subi	r30, 0x7D	; 125
+ 5d4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5d6:	60 81       	ld	r22, Z
+ 5d8:	71 81       	ldd	r23, Z+1	; 0x01
+ 5da:	66 5b       	subi	r22, 0xB6	; 182
+ 5dc:	72 40       	sbci	r23, 0x02	; 2
+ 5de:	31 f0       	breq	.+12     	; 0x5ec <RTOS_SetTask+0x2a>
+ 5e0:	2f 5f       	subi	r18, 0xFF	; 255
+ 5e2:	3f 4f       	sbci	r19, 0xFF	; 255
+		{
+			i++;
+			// If no free space - return
+			if (i == RTOS_TASK_QUEUE_SIZE)
+ 5e4:	25 30       	cpi	r18, 0x05	; 5
+ 5e6:	31 05       	cpc	r19, r1
+ 5e8:	89 f7       	brne	.-30     	; 0x5cc <RTOS_SetTask+0xa>
+ 5ea:	02 c0       	rjmp	.+4      	; 0x5f0 <RTOS_SetTask+0x2e>
+				return;
+		}
+
+		// Adding task into queue
+		RTOS_TaskQueue[i] = TS;
+ 5ec:	51 83       	std	Z+1, r21	; 0x01
+ 5ee:	40 83       	st	Z, r20
+    (void)__s;
+}
+
+static __inline__ void __iRestore(const  uint8_t *__s)
+{
+    SREG = *__s;
+ 5f0:	9f bf       	out	0x3f, r25	; 63
+    __asm__ volatile ("" ::: "memory");
+ 5f2:	08 95       	ret
+
+000005f4 <RTOS_SetTimerTask>:
+
+/************************************************************************/
+/* RTOS Setup task into timer queue                                     */
+/************************************************************************/
+void RTOS_SetTimerTask(TPTR TS, uint16_t NewTime)
+{
+ 5f4:	ac 01       	movw	r20, r24
+    uint8_t     i=0;
+
+    // Disable interrupts while processing queue
+    // if interrupt was enabled
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+ 5f6:	9f b7       	in	r25, 0x3f	; 63
+    return 1;
+}
+
+static __inline__ uint8_t __iCliRetVal(void)
+{
+    cli();
+ 5f8:	f8 94       	cli
+ 5fa:	20 e0       	ldi	r18, 0x00	; 0
+ 5fc:	30 e0       	ldi	r19, 0x00	; 0
+		// Update time interval for task if exists in queue
+		for(i=0; i<RTOS_TIMER_TASK_QUEUE_SIZE; i++) {
+			// Find task in queue
+			if(RTOS_TimerTaskQueue[i].RunTask == TS) {
+ 5fe:	f9 01       	movw	r30, r18
+ 600:	ee 0f       	add	r30, r30
+ 602:	ff 1f       	adc	r31, r31
+ 604:	ee 0f       	add	r30, r30
+ 606:	ff 1f       	adc	r31, r31
+ 608:	e5 59       	subi	r30, 0x95	; 149
+ 60a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 60c:	a0 81       	ld	r26, Z
+ 60e:	b1 81       	ldd	r27, Z+1	; 0x01
+ 610:	a4 17       	cp	r26, r20
+ 612:	b5 07       	cpc	r27, r21
+ 614:	a9 f0       	breq	.+42     	; 0x640 <RTOS_SetTimerTask+0x4c>
+ 616:	2f 5f       	subi	r18, 0xFF	; 255
+ 618:	3f 4f       	sbci	r19, 0xFF	; 255
+
+    // Disable interrupts while processing queue
+    // if interrupt was enabled
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		// Update time interval for task if exists in queue
+		for(i=0; i<RTOS_TIMER_TASK_QUEUE_SIZE; i++) {
+ 61a:	25 30       	cpi	r18, 0x05	; 5
+ 61c:	31 05       	cpc	r19, r1
+ 61e:	79 f7       	brne	.-34     	; 0x5fe <RTOS_SetTimerTask+0xa>
+ 620:	20 e0       	ldi	r18, 0x00	; 0
+ 622:	30 e0       	ldi	r19, 0x00	; 0
+		}
+
+		// Setup task into queue if not exists in queue
+		for(i=0; i < RTOS_TIMER_TASK_QUEUE_SIZE; i++) {
+			// Search free space in task queue
+			if (RTOS_TimerTaskQueue[i].RunTask == Idle) {
+ 624:	f9 01       	movw	r30, r18
+ 626:	ee 0f       	add	r30, r30
+ 628:	ff 1f       	adc	r31, r31
+ 62a:	ee 0f       	add	r30, r30
+ 62c:	ff 1f       	adc	r31, r31
+ 62e:	e5 59       	subi	r30, 0x95	; 149
+ 630:	ff 4f       	sbci	r31, 0xFF	; 255
+ 632:	a0 81       	ld	r26, Z
+ 634:	b1 81       	ldd	r27, Z+1	; 0x01
+ 636:	a6 5b       	subi	r26, 0xB6	; 182
+ 638:	b2 40       	sbci	r27, 0x02	; 2
+ 63a:	29 f4       	brne	.+10     	; 0x646 <RTOS_SetTimerTask+0x52>
+				// Set task
+				RTOS_TimerTaskQueue[i].RunTask = TS;
+ 63c:	51 83       	std	Z+1, r21	; 0x01
+ 63e:	40 83       	st	Z, r20
+				RTOS_TimerTaskQueue[i].Time = NewTime;
+ 640:	73 83       	std	Z+3, r23	; 0x03
+ 642:	62 83       	std	Z+2, r22	; 0x02
+				return;
+ 644:	05 c0       	rjmp	.+10     	; 0x650 <RTOS_SetTimerTask+0x5c>
+ 646:	2f 5f       	subi	r18, 0xFF	; 255
+ 648:	3f 4f       	sbci	r19, 0xFF	; 255
+				return;
+			}
+		}
+
+		// Setup task into queue if not exists in queue
+		for(i=0; i < RTOS_TIMER_TASK_QUEUE_SIZE; i++) {
+ 64a:	25 30       	cpi	r18, 0x05	; 5
+ 64c:	31 05       	cpc	r19, r1
+ 64e:	51 f7       	brne	.-44     	; 0x624 <RTOS_SetTimerTask+0x30>
+    (void)__s;
+}
+
+static __inline__ void __iRestore(const  uint8_t *__s)
+{
+    SREG = *__s;
+ 650:	9f bf       	out	0x3f, r25	; 63
+    __asm__ volatile ("" ::: "memory");
+ 652:	08 95       	ret
+
+00000654 <RTOS_TaskManager>:
+    uint8_t	    i=0;
+    TPTR	    RunTask=Idle;
+
+    // Disable interrupts
+    //RTOS_INTERRUPT_DISABLE();
+	cli();
+ 654:	f8 94       	cli
+
+    // Get first task from queue
+    RunTask = RTOS_TaskQueue[0];
+ 656:	e0 91 83 00 	lds	r30, 0x0083	; 0x800083 <RTOS_TaskQueue>
+ 65a:	f0 91 84 00 	lds	r31, 0x0084	; 0x800084 <RTOS_TaskQueue+0x1>
+
+    // If task is IDLE - run IDLE function
+    if (RunTask == Idle) {
+ 65e:	82 e0       	ldi	r24, 0x02	; 2
+ 660:	e6 3b       	cpi	r30, 0xB6	; 182
+ 662:	f8 07       	cpc	r31, r24
+ 664:	41 f1       	breq	.+80     	; 0x6b6 <RTOS_TaskManager+0x62>
+
+        // If task is other function - run function
+    } else {
+        // Shift pointers in queue
+        for(i=0; i < RTOS_TASK_QUEUE_SIZE-1; i++) {
+			RTOS_TaskQueue[i] = RTOS_TaskQueue[i+1];
+ 666:	80 91 85 00 	lds	r24, 0x0085	; 0x800085 <RTOS_TaskQueue+0x2>
+ 66a:	90 91 86 00 	lds	r25, 0x0086	; 0x800086 <RTOS_TaskQueue+0x3>
+ 66e:	90 93 84 00 	sts	0x0084, r25	; 0x800084 <RTOS_TaskQueue+0x1>
+ 672:	80 93 83 00 	sts	0x0083, r24	; 0x800083 <RTOS_TaskQueue>
+ 676:	80 91 87 00 	lds	r24, 0x0087	; 0x800087 <RTOS_TaskQueue+0x4>
+ 67a:	90 91 88 00 	lds	r25, 0x0088	; 0x800088 <RTOS_TaskQueue+0x5>
+ 67e:	90 93 86 00 	sts	0x0086, r25	; 0x800086 <RTOS_TaskQueue+0x3>
+ 682:	80 93 85 00 	sts	0x0085, r24	; 0x800085 <RTOS_TaskQueue+0x2>
+ 686:	80 91 89 00 	lds	r24, 0x0089	; 0x800089 <RTOS_TaskQueue+0x6>
+ 68a:	90 91 8a 00 	lds	r25, 0x008A	; 0x80008a <RTOS_TaskQueue+0x7>
+ 68e:	90 93 88 00 	sts	0x0088, r25	; 0x800088 <RTOS_TaskQueue+0x5>
+ 692:	80 93 87 00 	sts	0x0087, r24	; 0x800087 <RTOS_TaskQueue+0x4>
+ 696:	80 91 8b 00 	lds	r24, 0x008B	; 0x80008b <RTOS_TaskQueue+0x8>
+ 69a:	90 91 8c 00 	lds	r25, 0x008C	; 0x80008c <RTOS_TaskQueue+0x9>
+ 69e:	90 93 8a 00 	sts	0x008A, r25	; 0x80008a <RTOS_TaskQueue+0x7>
+ 6a2:	80 93 89 00 	sts	0x0089, r24	; 0x800089 <RTOS_TaskQueue+0x6>
+        }
+
+        // Setup IDLE function into last cell of queue
+        RTOS_TaskQueue[RTOS_TASK_QUEUE_SIZE-1] = Idle;
+ 6a6:	86 eb       	ldi	r24, 0xB6	; 182
+ 6a8:	92 e0       	ldi	r25, 0x02	; 2
+ 6aa:	90 93 8c 00 	sts	0x008C, r25	; 0x80008c <RTOS_TaskQueue+0x9>
+ 6ae:	80 93 8b 00 	sts	0x008B, r24	; 0x80008b <RTOS_TaskQueue+0x8>
+
+        // Enable interrupts
+        //RTOS_INTERRUPT_ENABLE();
+		sei();
+ 6b2:	78 94       	sei
+        (RunTask)();
+ 6b4:	09 94       	ijmp
+    RunTask = RTOS_TaskQueue[0];
+
+    // If task is IDLE - run IDLE function
+    if (RunTask == Idle) {
+        //RTOS_INTERRUPT_ENABLE();
+		sei();
+ 6b6:	78 94       	sei
+ 6b8:	08 95       	ret
+
+000006ba <RTOS_TimerService>:
+
+/************************************************************************/
+/* RTOS Timer service                                                   */
+/************************************************************************/
+inline void RTOS_TimerService(void)
+{
+ 6ba:	ef 92       	push	r14
+ 6bc:	ff 92       	push	r15
+ 6be:	0f 93       	push	r16
+ 6c0:	1f 93       	push	r17
+ 6c2:	cf 93       	push	r28
+ 6c4:	df 93       	push	r29
+ 6c6:	00 e0       	ldi	r16, 0x00	; 0
+ 6c8:	10 e0       	ldi	r17, 0x00	; 0
+            RTOS_TimerTaskQueue[i].Time--;
+        } else {
+            // Else - set task for run
+            RTOS_SetTask(RTOS_TimerTaskQueue[i].RunTask);
+            // Remove task from timer queue
+            RTOS_TimerTaskQueue[i].RunTask = Idle;
+ 6ca:	96 eb       	ldi	r25, 0xB6	; 182
+ 6cc:	e9 2e       	mov	r14, r25
+ 6ce:	92 e0       	ldi	r25, 0x02	; 2
+ 6d0:	f9 2e       	mov	r15, r25
+    uint8_t     i;
+
+    // Processing TASK queue
+    for(i=0; i < RTOS_TIMER_TASK_QUEUE_SIZE; i++) {
+        // If current task is IDLE - continue
+        if(RTOS_TimerTaskQueue[i].RunTask == Idle) continue;
+ 6d2:	e8 01       	movw	r28, r16
+ 6d4:	cc 0f       	add	r28, r28
+ 6d6:	dd 1f       	adc	r29, r29
+ 6d8:	cc 0f       	add	r28, r28
+ 6da:	dd 1f       	adc	r29, r29
+ 6dc:	c5 59       	subi	r28, 0x95	; 149
+ 6de:	df 4f       	sbci	r29, 0xFF	; 255
+ 6e0:	88 81       	ld	r24, Y
+ 6e2:	99 81       	ldd	r25, Y+1	; 0x01
+ 6e4:	86 5b       	subi	r24, 0xB6	; 182
+ 6e6:	92 40       	sbci	r25, 0x02	; 2
+ 6e8:	79 f0       	breq	.+30     	; 0x708 <RTOS_TimerService+0x4e>
+
+        // If current task is not IDLE
+        if(RTOS_TimerTaskQueue[i].Time > 0) {
+ 6ea:	8a 81       	ldd	r24, Y+2	; 0x02
+ 6ec:	9b 81       	ldd	r25, Y+3	; 0x03
+ 6ee:	89 2b       	or	r24, r25
+ 6f0:	31 f0       	breq	.+12     	; 0x6fe <RTOS_TimerService+0x44>
+            // If time not left - decrement
+            RTOS_TimerTaskQueue[i].Time--;
+ 6f2:	8a 81       	ldd	r24, Y+2	; 0x02
+ 6f4:	9b 81       	ldd	r25, Y+3	; 0x03
+ 6f6:	01 97       	sbiw	r24, 0x01	; 1
+ 6f8:	9b 83       	std	Y+3, r25	; 0x03
+ 6fa:	8a 83       	std	Y+2, r24	; 0x02
+ 6fc:	05 c0       	rjmp	.+10     	; 0x708 <RTOS_TimerService+0x4e>
+        } else {
+            // Else - set task for run
+            RTOS_SetTask(RTOS_TimerTaskQueue[i].RunTask);
+ 6fe:	88 81       	ld	r24, Y
+ 700:	99 81       	ldd	r25, Y+1	; 0x01
+ 702:	5f df       	rcall	.-322    	; 0x5c2 <RTOS_SetTask>
+            // Remove task from timer queue
+            RTOS_TimerTaskQueue[i].RunTask = Idle;
+ 704:	f9 82       	std	Y+1, r15	; 0x01
+ 706:	e8 82       	st	Y, r14
+ 708:	0f 5f       	subi	r16, 0xFF	; 255
+ 70a:	1f 4f       	sbci	r17, 0xFF	; 255
+inline void RTOS_TimerService(void)
+{
+    uint8_t     i;
+
+    // Processing TASK queue
+    for(i=0; i < RTOS_TIMER_TASK_QUEUE_SIZE; i++) {
+ 70c:	05 30       	cpi	r16, 0x05	; 5
+ 70e:	11 05       	cpc	r17, r1
+ 710:	01 f7       	brne	.-64     	; 0x6d2 <RTOS_TimerService+0x18>
+            RTOS_SetTask(RTOS_TimerTaskQueue[i].RunTask);
+            // Remove task from timer queue
+            RTOS_TimerTaskQueue[i].RunTask = Idle;
+        }
+    }
+}
+ 712:	df 91       	pop	r29
+ 714:	cf 91       	pop	r28
+ 716:	1f 91       	pop	r17
+ 718:	0f 91       	pop	r16
+ 71a:	ff 90       	pop	r15
+ 71c:	ef 90       	pop	r14
+ 71e:	08 95       	ret
+
+00000720 <utoa_cycle_sub>:
+	buffer[2] = '\0';
+	return buffer;
+}
+
+char * utoa_cycle_sub(uint8_t value, char *buffer)
+{
+ 720:	ef 92       	push	r14
+ 722:	ff 92       	push	r15
+ 724:	0f 93       	push	r16
+ 726:	1f 93       	push	r17
+ 728:	cf 93       	push	r28
+ 72a:	df 93       	push	r29
+ 72c:	db 01       	movw	r26, r22
+	if(value == 0)
+ 72e:	81 11       	cpse	r24, r1
+ 730:	09 c0       	rjmp	.+18     	; 0x744 <utoa_cycle_sub+0x24>
+	{
+		buffer[0] = '0';
+ 732:	80 e3       	ldi	r24, 0x30	; 48
+ 734:	8c 93       	st	X, r24
+		buffer[1] = '0';
+ 736:	11 96       	adiw	r26, 0x01	; 1
+ 738:	8c 93       	st	X, r24
+ 73a:	11 97       	sbiw	r26, 0x01	; 1
+		buffer[2] = 0;
+ 73c:	12 96       	adiw	r26, 0x02	; 2
+ 73e:	1c 92       	st	X, r1
+ 740:	12 97       	sbiw	r26, 0x02	; 2
+		return buffer;
+ 742:	2b c0       	rjmp	.+86     	; 0x79a <utoa_cycle_sub+0x7a>
+	}
+	char *ptr = buffer;
+	uint8_t j = (value > 9) ? 0 : 1;
+ 744:	91 e0       	ldi	r25, 0x01	; 1
+ 746:	8a 30       	cpi	r24, 0x0A	; 10
+ 748:	08 f0       	brcs	.+2      	; 0x74c <utoa_cycle_sub+0x2c>
+ 74a:	90 e0       	ldi	r25, 0x00	; 0
+ 74c:	0d e2       	ldi	r16, 0x2D	; 45
+ 74e:	10 e0       	ldi	r17, 0x00	; 0
+ 750:	ed 01       	movw	r28, r26
+ 752:	7d 01       	movw	r14, r26
+ 754:	23 e0       	ldi	r18, 0x03	; 3
+ 756:	e2 0e       	add	r14, r18
+ 758:	f1 1c       	adc	r15, r1
+	uint8_t i = 0;
+	do
+	{
+		uint8_t pow3 = pgm_read_dword(pow3Table8 + (i++));
+ 75a:	f8 01       	movw	r30, r16
+ 75c:	45 91       	lpm	r20, Z+
+ 75e:	55 91       	lpm	r21, Z+
+ 760:	65 91       	lpm	r22, Z+
+ 762:	74 91       	lpm	r23, Z
+		uint8_t count = 0;
+ 764:	20 e0       	ldi	r18, 0x00	; 0
+		while(value >= pow3)
+ 766:	84 17       	cp	r24, r20
+ 768:	18 f0       	brcs	.+6      	; 0x770 <utoa_cycle_sub+0x50>
+		{
+			count ++;
+ 76a:	2f 5f       	subi	r18, 0xFF	; 255
+			value -= pow3;
+ 76c:	84 1b       	sub	r24, r20
+ 76e:	fb cf       	rjmp	.-10     	; 0x766 <utoa_cycle_sub+0x46>
+		}
+		*ptr++ = count + '0';
+ 770:	20 5d       	subi	r18, 0xD0	; 208
+ 772:	29 93       	st	Y+, r18
+ 774:	0f 5f       	subi	r16, 0xFF	; 255
+ 776:	1f 4f       	sbci	r17, 0xFF	; 255
+	} while(i < 3);
+ 778:	ce 15       	cp	r28, r14
+ 77a:	df 05       	cpc	r29, r15
+ 77c:	71 f7       	brne	.-36     	; 0x75a <utoa_cycle_sub+0x3a>
+	*ptr = 0;
+ 77e:	13 96       	adiw	r26, 0x03	; 3
+ 780:	1c 92       	st	X, r1
+ 782:	13 97       	sbiw	r26, 0x03	; 3
+ 784:	89 2f       	mov	r24, r25
+ 786:	90 e0       	ldi	r25, 0x00	; 0
+ 788:	fd 01       	movw	r30, r26
+ 78a:	e8 0f       	add	r30, r24
+ 78c:	f9 1f       	adc	r31, r25
+ 78e:	df 01       	movw	r26, r30
+ 790:	a8 1b       	sub	r26, r24
+ 792:	b9 0b       	sbc	r27, r25
+	
+	while(buffer[j] == '0') ++buffer;
+ 794:	21 91       	ld	r18, Z+
+ 796:	20 33       	cpi	r18, 0x30	; 48
+ 798:	d1 f3       	breq	.-12     	; 0x78e <utoa_cycle_sub+0x6e>
+	return buffer;
+}
+ 79a:	cd 01       	movw	r24, r26
+ 79c:	df 91       	pop	r29
+ 79e:	cf 91       	pop	r28
+ 7a0:	1f 91       	pop	r17
+ 7a2:	0f 91       	pop	r16
+ 7a4:	ff 90       	pop	r15
+ 7a6:	ef 90       	pop	r14
+ 7a8:	08 95       	ret
+
+000007aa <eeprom_read_block>:
+ 7aa:	a8 2f       	mov	r26, r24
+ 7ac:	86 2f       	mov	r24, r22
+
+000007ae <eeprom_read_blraw>:
+ 7ae:	e8 2f       	mov	r30, r24
+ 7b0:	e1 99       	sbic	0x1c, 1	; 28
+ 7b2:	fe cf       	rjmp	.-4      	; 0x7b0 <eeprom_read_blraw+0x2>
+ 7b4:	05 c0       	rjmp	.+10     	; 0x7c0 <eeprom_read_blraw+0x12>
+ 7b6:	ee bb       	out	0x1e, r30	; 30
+ 7b8:	e0 9a       	sbi	0x1c, 0	; 28
+ 7ba:	e3 95       	inc	r30
+ 7bc:	0d b2       	in	r0, 0x1d	; 29
+ 7be:	0d 92       	st	X+, r0
+ 7c0:	41 50       	subi	r20, 0x01	; 1
+ 7c2:	c8 f7       	brcc	.-14     	; 0x7b6 <eeprom_read_blraw+0x8>
+ 7c4:	08 95       	ret
+
+000007c6 <eeprom_write_block>:
+ 7c6:	a8 2f       	mov	r26, r24
+ 7c8:	86 2f       	mov	r24, r22
+ 7ca:	02 c0       	rjmp	.+4      	; 0x7d0 <eeprom_write_block+0xa>
+ 7cc:	2d 91       	ld	r18, X+
+ 7ce:	04 d0       	rcall	.+8      	; 0x7d8 <eeprom_write_r18>
+ 7d0:	41 50       	subi	r20, 0x01	; 1
+ 7d2:	e0 f7       	brcc	.-8      	; 0x7cc <eeprom_write_block+0x6>
+ 7d4:	08 95       	ret
+
+000007d6 <eeprom_write_byte>:
+ 7d6:	26 2f       	mov	r18, r22
+
+000007d8 <eeprom_write_r18>:
+ 7d8:	e1 99       	sbic	0x1c, 1	; 28
+ 7da:	fe cf       	rjmp	.-4      	; 0x7d8 <eeprom_write_r18>
+ 7dc:	1c ba       	out	0x1c, r1	; 28
+ 7de:	8e bb       	out	0x1e, r24	; 30
+ 7e0:	2d bb       	out	0x1d, r18	; 29
+ 7e2:	0f b6       	in	r0, 0x3f	; 63
+ 7e4:	f8 94       	cli
+ 7e6:	e2 9a       	sbi	0x1c, 2	; 28
+ 7e8:	e1 9a       	sbi	0x1c, 1	; 28
+ 7ea:	0f be       	out	0x3f, r0	; 63
+ 7ec:	01 96       	adiw	r24, 0x01	; 1
+ 7ee:	08 95       	ret
+
+000007f0 <_exit>:
+ 7f0:	f8 94       	cli
+
+000007f2 <__stop_program>:
+ 7f2:	ff cf       	rjmp	.-2      	; 0x7f2 <__stop_program>
